@@ -1,0 +1,72 @@
+import org.junit.Test;
+
+public class TestJunit {
+	City city;
+	public TestJunit(){
+		super();
+		city = new City();
+		city.addLine(2, 5, 10, 12);
+		city.addNode("c", 10, 20);
+		city.addNode("e", 40, 20);
+		city.addNode("a", 10, 20);
+		city.addNode("f", 40, 20);
+		
+		city.addLine(4, 5, 10, 0);
+		city.addNode("c", 10, 20);
+		city.addNode("s", 40, 20);
+		city.addNode("h", 10, 20);
+		city.addNode("j", 40, 20);
+		
+		city.addLine(3, 6, 10, 1);
+		city.addNode("e", 40, 20);
+		city.addNode("k", 10, 20);
+		city.addNode("f", 40, 20);
+		
+		city.addLine(13, 6, 10, 7);
+		city.addNode("j", 40, 20);
+		city.addNode("k", 10, 20);
+		city.addNode("a", 10, 20);
+		city.addNode("r", 40, 20);
+		city.addNode("oo", 20, 23);
+		
+		city.addLine(5, 5, 10, 2);
+		city.addNode("a", 10, 20);
+		city.addNode("b", 40, 20);
+		city.addNode("d", 20, 23);
+		
+		city.addLine(1, 5, 10, 2);
+		city.addNode("b", 40, 20);
+		city.addNode("w", 40, 20);
+		city.addNode("d", 20, 23);
+		city.addNode("r", 40, 20);
+		city.addNode("p", 20, 23);
+		
+		city.addLine(11, 5, 10, 22);
+		city.addNode("bb", 40, 20);
+		city.addNode("ww", 40, 20);
+		city.addNode("d", 20, 23);
+		city.addNode("s", 40, 20);
+		city.addNode("p", 20, 23);
+	}
+	
+	@Test
+	public StringBuffer testFastLine1(){
+		Guide guide = new Guide(city);
+		guide.preprocess();
+		
+		StringBuffer line = guide.fast("ww", "c",true);
+		
+		return line;
+	}
+	
+	@Test
+	public StringBuffer testFastLine2(){
+		Guide guide = new Guide(city);
+		guide.preprocess();
+		
+		StringBuffer line = guide.fast("p", "c",false);
+		
+		return line;
+	}
+
+}
